@@ -1,0 +1,129 @@
+{
+	"name": "AzureSQL_Bookings",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSQLDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "CarrierID",
+				"type": "varchar"
+			},
+			{
+				"name": "ConnectionID",
+				"type": "decimal",
+				"precision": 4,
+				"scale": 0
+			},
+			{
+				"name": "FlightDate",
+				"type": "date"
+			},
+			{
+				"name": "BookId",
+				"type": "decimal",
+				"precision": 8,
+				"scale": 0
+			},
+			{
+				"name": "CustomerId",
+				"type": "decimal",
+				"precision": 8,
+				"scale": 0
+			},
+			{
+				"name": "CustomerType",
+				"type": "varchar"
+			},
+			{
+				"name": "Smoker",
+				"type": "varchar"
+			},
+			{
+				"name": "LuggageWeight",
+				"type": "decimal",
+				"precision": 8,
+				"scale": 4
+			},
+			{
+				"name": "WeightUnit",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceId",
+				"type": "varchar"
+			},
+			{
+				"name": "Class",
+				"type": "varchar"
+			},
+			{
+				"name": "ForeignCurrencyAmount",
+				"type": "decimal",
+				"precision": 15,
+				"scale": 2
+			},
+			{
+				"name": "ForeignCurrencyCode",
+				"type": "decimal",
+				"precision": 15,
+				"scale": 2
+			},
+			{
+				"name": "LocalCurrencyAmount",
+				"type": "decimal",
+				"precision": 15,
+				"scale": 2
+			},
+			{
+				"name": "LocalCurrencyCode",
+				"type": "decimal",
+				"precision": 15,
+				"scale": 2
+			},
+			{
+				"name": "OrderDate",
+				"type": "date"
+			},
+			{
+				"name": "Counter",
+				"type": "decimal",
+				"precision": 8,
+				"scale": 0
+			},
+			{
+				"name": "AgencyNumber",
+				"type": "decimal",
+				"precision": 8,
+				"scale": 0
+			},
+			{
+				"name": "Cancelled",
+				"type": "varchar"
+			},
+			{
+				"name": "Reserved",
+				"type": "varchar"
+			},
+			{
+				"name": "PassName",
+				"type": "varchar"
+			},
+			{
+				"name": "PassForm",
+				"type": "varchar"
+			},
+			{
+				"name": "PassBirth",
+				"type": "date"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Bookings"
+		}
+	}
+}
