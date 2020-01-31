@@ -20,9 +20,7 @@
 			},
 			{
 				"name": "FlightDate",
-				"type": "datetime",
-				"precision": 23,
-				"scale": 3
+				"type": "varchar"
 			},
 			{
 				"name": "BookId",
@@ -84,9 +82,7 @@
 			},
 			{
 				"name": "OrderDate",
-				"type": "datetime",
-				"precision": 23,
-				"scale": 3
+				"type": "varchar"
 			},
 			{
 				"name": "Counter",
@@ -118,9 +114,7 @@
 			},
 			{
 				"name": "PassBirth",
-				"type": "datetime",
-				"precision": 23,
-				"scale": 3
+				"type": "varchar"
 			}
 		],
 		"typeProperties": {
