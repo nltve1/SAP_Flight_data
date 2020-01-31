@@ -1,0 +1,15 @@
+{
+	"name": "SAPFlightData",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SAPFlightDataService",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SapEccResource",
+		"schema": [],
+		"typeProperties": {
+			"path": "ZCDS_V_BOOKINGS"
+		}
+	}
+}
