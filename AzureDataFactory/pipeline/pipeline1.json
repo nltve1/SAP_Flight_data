@@ -1,0 +1,280 @@
+{
+	"name": "pipeline1",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy SAP Flight Data to Azure",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SapEccSource",
+						"query": "?$select=*"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "truncate table [dbo].[Bookings]",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "CarrierId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CarrierID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ConnectionId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ConnectionID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "FlightDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "FlightDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "BookId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BookId",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerId",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerType",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Smoker",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Smoker",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LuggageWeight",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "LuggageWeight",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "WeightUnit",
+									"type": "String"
+								},
+								"sink": {
+									"name": "WeightUnit",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceId",
+									"type": "Boolean"
+								},
+								"sink": {
+									"name": "InvoiceId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Class",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Class",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ForeignCurrencyAmount",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "ForeignCurrencyAmount",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "ForeignCurrencyCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ForeignCurrencyCode",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "LocalCurrencyAmount",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "LocalCurrencyAmount",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "LocalCurrencyCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LocalCurrencyCode",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "OrderDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "OrderDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "Counter",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Counter",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "AgencyNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AgencyNumber",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Cancelled",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Cancelled",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Reserved",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Reserved",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "passname",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PassName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "passform",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PassForm",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "passbirth",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "PassBirth",
+									"type": "DateTime"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SAPFlightData",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AzureSQL_Bookings",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}
