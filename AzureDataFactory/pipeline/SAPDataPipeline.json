@@ -1,8 +1,0 @@
-{
-	"name": "SAPDataPipeline",
-	"properties": {
-		"description": "SAP Data Pipeline",
-		"concurrency": 1,
-		"annotations": []
-	}
-}
