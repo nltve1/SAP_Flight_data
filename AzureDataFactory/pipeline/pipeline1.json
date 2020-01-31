@@ -154,8 +154,7 @@
 									"type": "String"
 								},
 								"sink": {
-									"name": "ForeignCurrencyCode",
-									"type": "Decimal"
+									"name": "ForeignCurrencyCode"
 								}
 							},
 							{
@@ -174,8 +173,7 @@
 									"type": "String"
 								},
 								"sink": {
-									"name": "LocalCurrencyCode",
-									"type": "Decimal"
+									"name": "LocalCurrencyCode"
 								}
 							},
 							{
