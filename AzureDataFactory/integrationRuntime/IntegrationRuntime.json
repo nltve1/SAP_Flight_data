@@ -1,0 +1,17 @@
+{
+	"name": "IntegrationRuntime",
+	"properties": {
+		"type": "Managed",
+		"description": "My Integration Runtime",
+		"typeProperties": {
+			"computeProperties": {
+				"location": "West Europe",
+				"dataFlowProperties": {
+					"computeType": "General",
+					"coreCount": 8,
+					"timeToLive": 0
+				}
+			}
+		}
+	}
+}
