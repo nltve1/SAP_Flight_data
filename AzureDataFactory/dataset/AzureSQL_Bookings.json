@@ -68,9 +68,7 @@
 			},
 			{
 				"name": "ForeignCurrencyCode",
-				"type": "decimal",
-				"precision": 15,
-				"scale": 2
+				"type": "varchar"
 			},
 			{
 				"name": "LocalCurrencyAmount",
@@ -80,9 +78,7 @@
 			},
 			{
 				"name": "LocalCurrencyCode",
-				"type": "decimal",
-				"precision": 15,
-				"scale": 2
+				"type": "varchar"
 			},
 			{
 				"name": "OrderDate",
