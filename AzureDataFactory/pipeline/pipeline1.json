@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "SAP Customer Data Init",
+				"name": "SAP Customer Data Delta",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
