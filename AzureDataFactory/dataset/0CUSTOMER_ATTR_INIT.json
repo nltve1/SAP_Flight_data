@@ -1,7 +1,7 @@
 {
-	"name": "0CUSTOMER_ATTR",
+	"name": "0CUSTOMER_ATTR_INIT",
 	"properties": {
-		"description": "Customer Attributes",
+		"description": "Initial Load Customer Attributes",
 		"linkedServiceName": {
 			"referenceName": "SAP_0CUSTOMER_ATTR",
 			"type": "LinkedServiceReference"
