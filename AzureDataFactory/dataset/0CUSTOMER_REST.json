@@ -1,0 +1,12 @@
+{
+	"name": "0CUSTOMER_REST",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "0CUSTOMER_REST_SERVICE",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"schema": []
+	}
+}
