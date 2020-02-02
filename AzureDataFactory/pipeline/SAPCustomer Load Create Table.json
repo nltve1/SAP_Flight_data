@@ -21,7 +21,8 @@
 					},
 					"sink": {
 						"type": "AzureSqlSink",
-						"tableOption": "autoCreate"
+						"preCopyScript": "truncate table [dbo].[Customer]",
+						"disableMetricsCollection": false
 					},
 					"enableStaging": false
 				},
