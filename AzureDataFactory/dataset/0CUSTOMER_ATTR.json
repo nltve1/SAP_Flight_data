@@ -1,0 +1,16 @@
+{
+	"name": "0CUSTOMER_ATTR",
+	"properties": {
+		"description": "Customer Attributes",
+		"linkedServiceName": {
+			"referenceName": "SAP_0CUSTOMER_ATTR",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SapEccResource",
+		"schema": [],
+		"typeProperties": {
+			"path": "EntityOf0CUSTOMER_ATTR"
+		}
+	}
+}
