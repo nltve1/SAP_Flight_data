@@ -34,11 +34,6 @@
 						"mappings": [
 							{
 								"source": {
-									"path": "['__metadata']['type']"
-								}
-							},
-							{
-								"source": {
 									"path": "['KUNNR']"
 								},
 								"sink": {
