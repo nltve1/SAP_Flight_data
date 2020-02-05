@@ -35,7 +35,7 @@
 						"mappings": [
 							{
 								"source": {
-									"path": "$['d']['results'][0]['KUNNR']"
+									"path": "['KUNNR']"
 								},
 								"sink": {
 									"name": "KUNNR",
@@ -44,7 +44,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['ADRNR']"
+									"path": "['ADRNR']"
 								},
 								"sink": {
 									"name": "ADRNR",
@@ -53,7 +53,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['ANRED']"
+									"path": "['ANRED']"
 								},
 								"sink": {
 									"name": "ANRED",
@@ -62,7 +62,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['AUFSD']"
+									"path": "['AUFSD']"
 								},
 								"sink": {
 									"name": "AUFSD",
@@ -71,7 +71,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['BAHNE']"
+									"path": "['BAHNE']"
 								},
 								"sink": {
 									"name": "BAHNE",
@@ -80,7 +80,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['BAHNS']"
+									"path": "['BAHNS']"
 								},
 								"sink": {
 									"name": "BAHNS",
@@ -89,7 +89,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['BBBNR']"
+									"path": "['BBBNR']"
 								},
 								"sink": {
 									"name": "BBBNR",
@@ -98,7 +98,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['BBSNR']"
+									"path": "['BBSNR']"
 								},
 								"sink": {
 									"name": "BBSNR",
@@ -107,7 +107,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['BEGRU']"
+									"path": "['BEGRU']"
 								},
 								"sink": {
 									"name": "BEGRU",
@@ -116,7 +116,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['BRSCH']"
+									"path": "['BRSCH']"
 								},
 								"sink": {
 									"name": "BRSCH",
@@ -125,7 +125,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['BUBKZ']"
+									"path": "['BUBKZ']"
 								},
 								"sink": {
 									"name": "BUBKZ",
@@ -134,7 +134,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['DATLT']"
+									"path": "['DATLT']"
 								},
 								"sink": {
 									"name": "DATLT",
@@ -143,7 +143,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['ERNAM']"
+									"path": "['ERNAM']"
 								},
 								"sink": {
 									"name": "ERNAM",
@@ -152,7 +152,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['EXABL']"
+									"path": "['EXABL']"
 								},
 								"sink": {
 									"name": "EXABL",
@@ -161,7 +161,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['FAKSD']"
+									"path": "['FAKSD']"
 								},
 								"sink": {
 									"name": "FAKSD",
@@ -170,7 +170,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['FISKN']"
+									"path": "['FISKN']"
 								},
 								"sink": {
 									"name": "FISKN",
@@ -179,7 +179,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['KNAZK']"
+									"path": "['KNAZK']"
 								},
 								"sink": {
 									"name": "KNAZK",
@@ -188,7 +188,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['KNRZA']"
+									"path": "['KNRZA']"
 								},
 								"sink": {
 									"name": "KNRZA",
@@ -197,7 +197,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['KONZS']"
+									"path": "['KONZS']"
 								},
 								"sink": {
 									"name": "KONZS",
@@ -206,7 +206,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['KTOKD']"
+									"path": "['KTOKD']"
 								},
 								"sink": {
 									"name": "KTOKD",
@@ -215,7 +215,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['KUKLA']"
+									"path": "['KUKLA']"
 								},
 								"sink": {
 									"name": "KUKLA",
@@ -224,7 +224,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['LAND1']"
+									"path": "['LAND1']"
 								},
 								"sink": {
 									"name": "LAND1",
@@ -233,7 +233,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['LIFNR']"
+									"path": "['LIFNR']"
 								},
 								"sink": {
 									"name": "LIFNR",
@@ -242,7 +242,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['LIFSD']"
+									"path": "['LIFSD']"
 								},
 								"sink": {
 									"name": "LIFSD",
@@ -251,7 +251,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['LOCCO']"
+									"path": "['LOCCO']"
 								},
 								"sink": {
 									"name": "LOCCO",
@@ -260,7 +260,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['LOEVM']"
+									"path": "['LOEVM']"
 								},
 								"sink": {
 									"name": "LOEVM",
@@ -269,7 +269,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['NAME1']"
+									"path": "['NAME1']"
 								},
 								"sink": {
 									"name": "NAME1",
@@ -278,7 +278,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['NAME2']"
+									"path": "['NAME2']"
 								},
 								"sink": {
 									"name": "NAME2",
@@ -287,7 +287,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['NAME3']"
+									"path": "['NAME3']"
 								},
 								"sink": {
 									"name": "NAME3",
@@ -296,7 +296,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['NAME4']"
+									"path": "['NAME4']"
 								},
 								"sink": {
 									"name": "NAME4",
@@ -305,7 +305,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['NIELS']"
+									"path": "['NIELS']"
 								},
 								"sink": {
 									"name": "NIELS",
@@ -314,7 +314,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['ORT01']"
+									"path": "['ORT01']"
 								},
 								"sink": {
 									"name": "ORT01",
@@ -323,7 +323,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['ORT02']"
+									"path": "['ORT02']"
 								},
 								"sink": {
 									"name": "ORT02",
@@ -332,7 +332,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['PFACH']"
+									"path": "['PFACH']"
 								},
 								"sink": {
 									"name": "PFACH",
@@ -341,7 +341,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['PSTL2']"
+									"path": "['PSTL2']"
 								},
 								"sink": {
 									"name": "PSTL2",
@@ -350,7 +350,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['PSTLZ']"
+									"path": "['PSTLZ']"
 								},
 								"sink": {
 									"name": "PSTLZ",
@@ -359,7 +359,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['REGIO']"
+									"path": "['REGIO']"
 								},
 								"sink": {
 									"name": "REGIO",
@@ -368,7 +368,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['COUNC']"
+									"path": "['COUNC']"
 								},
 								"sink": {
 									"name": "COUNC",
@@ -377,7 +377,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['CITYC']"
+									"path": "['CITYC']"
 								},
 								"sink": {
 									"name": "CITYC",
@@ -386,7 +386,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['RPMKR']"
+									"path": "['RPMKR']"
 								},
 								"sink": {
 									"name": "RPMKR",
@@ -395,7 +395,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['SORTL']"
+									"path": "['SORTL']"
 								},
 								"sink": {
 									"name": "SORTL",
@@ -404,7 +404,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['SPERR']"
+									"path": "['SPERR']"
 								},
 								"sink": {
 									"name": "SPERR",
@@ -413,7 +413,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['SPRAS']"
+									"path": "['SPRAS']"
 								},
 								"sink": {
 									"name": "SPRAS",
@@ -422,7 +422,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['STCD1']"
+									"path": "['STCD1']"
 								},
 								"sink": {
 									"name": "STCD1",
@@ -431,7 +431,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['STCD2']"
+									"path": "['STCD2']"
 								},
 								"sink": {
 									"name": "STCD2",
@@ -440,7 +440,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['STKZA']"
+									"path": "['STKZA']"
 								},
 								"sink": {
 									"name": "STKZA",
@@ -449,7 +449,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['STKZU']"
+									"path": "['STKZU']"
 								},
 								"sink": {
 									"name": "STKZU",
@@ -458,7 +458,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['STRAS']"
+									"path": "['STRAS']"
 								},
 								"sink": {
 									"name": "STRAS",
@@ -467,7 +467,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['TELBX']"
+									"path": "['TELBX']"
 								},
 								"sink": {
 									"name": "TELBX",
@@ -476,7 +476,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['TELF1']"
+									"path": "['TELF1']"
 								},
 								"sink": {
 									"name": "TELF1",
@@ -485,7 +485,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['TELF2']"
+									"path": "['TELF2']"
 								},
 								"sink": {
 									"name": "TELF2",
@@ -494,7 +494,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['TELFX']"
+									"path": "['TELFX']"
 								},
 								"sink": {
 									"name": "TELFX",
@@ -503,7 +503,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['TELTX']"
+									"path": "['TELTX']"
 								},
 								"sink": {
 									"name": "TELTX",
@@ -512,7 +512,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['TELX1']"
+									"path": "['TELX1']"
 								},
 								"sink": {
 									"name": "TELX1",
@@ -521,7 +521,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['LZONE']"
+									"path": "['LZONE']"
 								},
 								"sink": {
 									"name": "LZONE",
@@ -530,7 +530,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['XCPDK']"
+									"path": "['XCPDK']"
 								},
 								"sink": {
 									"name": "XCPDK",
@@ -539,7 +539,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['XZEMP']"
+									"path": "['XZEMP']"
 								},
 								"sink": {
 									"name": "XZEMP",
@@ -548,7 +548,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['VBUND']"
+									"path": "['VBUND']"
 								},
 								"sink": {
 									"name": "VBUND",
@@ -557,7 +557,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['STCEG']"
+									"path": "['STCEG']"
 								},
 								"sink": {
 									"name": "STCEG",
@@ -566,7 +566,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['DEAR1']"
+									"path": "['DEAR1']"
 								},
 								"sink": {
 									"name": "DEAR1",
@@ -575,7 +575,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['DEAR2']"
+									"path": "['DEAR2']"
 								},
 								"sink": {
 									"name": "DEAR2",
@@ -584,7 +584,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['DEAR3']"
+									"path": "['DEAR3']"
 								},
 								"sink": {
 									"name": "DEAR3",
@@ -593,7 +593,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['DEAR4']"
+									"path": "['DEAR4']"
 								},
 								"sink": {
 									"name": "DEAR4",
@@ -602,7 +602,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['DEAR5']"
+									"path": "['DEAR5']"
 								},
 								"sink": {
 									"name": "DEAR5",
@@ -611,7 +611,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['DEAR6']"
+									"path": "['DEAR6']"
 								},
 								"sink": {
 									"name": "DEAR6",
@@ -620,7 +620,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['GFORM']"
+									"path": "['GFORM']"
 								},
 								"sink": {
 									"name": "GFORM",
@@ -629,7 +629,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['BRAN1']"
+									"path": "['BRAN1']"
 								},
 								"sink": {
 									"name": "BRAN1",
@@ -638,7 +638,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['BRAN2']"
+									"path": "['BRAN2']"
 								},
 								"sink": {
 									"name": "BRAN2",
@@ -647,7 +647,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['BRAN3']"
+									"path": "['BRAN3']"
 								},
 								"sink": {
 									"name": "BRAN3",
@@ -656,7 +656,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['BRAN4']"
+									"path": "['BRAN4']"
 								},
 								"sink": {
 									"name": "BRAN4",
@@ -665,7 +665,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['BRAN5']"
+									"path": "['BRAN5']"
 								},
 								"sink": {
 									"name": "BRAN5",
@@ -674,7 +674,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['EKONT']"
+									"path": "['EKONT']"
 								},
 								"sink": {
 									"name": "EKONT",
@@ -683,7 +683,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['UMSAT']"
+									"path": "['UMSAT']"
 								},
 								"sink": {
 									"name": "UMSAT",
@@ -692,7 +692,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['UMJAH']"
+									"path": "['UMJAH']"
 								},
 								"sink": {
 									"name": "UMJAH",
@@ -701,7 +701,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['UWAER']"
+									"path": "['UWAER']"
 								},
 								"sink": {
 									"name": "UWAER",
@@ -710,7 +710,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['JMZAH']"
+									"path": "['JMZAH']"
 								},
 								"sink": {
 									"name": "JMZAH",
@@ -719,7 +719,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['JMJAH']"
+									"path": "['JMJAH']"
 								},
 								"sink": {
 									"name": "JMJAH",
@@ -728,7 +728,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['KATR1']"
+									"path": "['KATR1']"
 								},
 								"sink": {
 									"name": "KATR1",
@@ -737,7 +737,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['KATR2']"
+									"path": "['KATR2']"
 								},
 								"sink": {
 									"name": "KATR2",
@@ -746,7 +746,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['KATR3']"
+									"path": "['KATR3']"
 								},
 								"sink": {
 									"name": "KATR3",
@@ -755,7 +755,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['KATR4']"
+									"path": "['KATR4']"
 								},
 								"sink": {
 									"name": "KATR4",
@@ -764,7 +764,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['KATR5']"
+									"path": "['KATR5']"
 								},
 								"sink": {
 									"name": "KATR5",
@@ -773,7 +773,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['KATR6']"
+									"path": "['KATR6']"
 								},
 								"sink": {
 									"name": "KATR6",
@@ -782,7 +782,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['KATR7']"
+									"path": "['KATR7']"
 								},
 								"sink": {
 									"name": "KATR7",
@@ -791,7 +791,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['KATR8']"
+									"path": "['KATR8']"
 								},
 								"sink": {
 									"name": "KATR8",
@@ -800,7 +800,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['KATR9']"
+									"path": "['KATR9']"
 								},
 								"sink": {
 									"name": "KATR9",
@@ -809,7 +809,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['KATR10']"
+									"path": "['KATR10']"
 								},
 								"sink": {
 									"name": "KATR10",
@@ -818,7 +818,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['STKZN']"
+									"path": "['STKZN']"
 								},
 								"sink": {
 									"name": "STKZN",
@@ -827,7 +827,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['UMSA1']"
+									"path": "['UMSA1']"
 								},
 								"sink": {
 									"name": "UMSA1",
@@ -836,7 +836,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['TXJCD']"
+									"path": "['TXJCD']"
 								},
 								"sink": {
 									"name": "TXJCD",
@@ -845,7 +845,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['MCOD1']"
+									"path": "['MCOD1']"
 								},
 								"sink": {
 									"name": "MCOD1",
@@ -854,7 +854,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['MCOD2']"
+									"path": "['MCOD2']"
 								},
 								"sink": {
 									"name": "MCOD2",
@@ -863,7 +863,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['MCOD3']"
+									"path": "['MCOD3']"
 								},
 								"sink": {
 									"name": "MCOD3",
@@ -872,7 +872,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['PERIV']"
+									"path": "['PERIV']"
 								},
 								"sink": {
 									"name": "PERIV",
@@ -881,7 +881,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['ABRVW']"
+									"path": "['ABRVW']"
 								},
 								"sink": {
 									"name": "ABRVW",
@@ -890,7 +890,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['INSPBYDEBI']"
+									"path": "['INSPBYDEBI']"
 								},
 								"sink": {
 									"name": "INSPBYDEBI",
@@ -899,7 +899,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['INSPATDEBI']"
+									"path": "['INSPATDEBI']"
 								},
 								"sink": {
 									"name": "INSPATDEBI",
@@ -908,7 +908,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['KTOCD']"
+									"path": "['KTOCD']"
 								},
 								"sink": {
 									"name": "KTOCD",
@@ -917,7 +917,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['PFORT']"
+									"path": "['PFORT']"
 								},
 								"sink": {
 									"name": "PFORT",
@@ -926,7 +926,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['WERKS']"
+									"path": "['WERKS']"
 								},
 								"sink": {
 									"name": "WERKS",
@@ -935,7 +935,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['DTAMS']"
+									"path": "['DTAMS']"
 								},
 								"sink": {
 									"name": "DTAMS",
@@ -944,7 +944,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['DTAWS']"
+									"path": "['DTAWS']"
 								},
 								"sink": {
 									"name": "DTAWS",
@@ -953,7 +953,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['DUEFL']"
+									"path": "['DUEFL']"
 								},
 								"sink": {
 									"name": "DUEFL",
@@ -962,7 +962,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['HZUOR']"
+									"path": "['HZUOR']"
 								},
 								"sink": {
 									"name": "HZUOR",
@@ -971,7 +971,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['SPERZ']"
+									"path": "['SPERZ']"
 								},
 								"sink": {
 									"name": "SPERZ",
@@ -980,7 +980,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['ETIKG']"
+									"path": "['ETIKG']"
 								},
 								"sink": {
 									"name": "ETIKG",
@@ -989,7 +989,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['CIVVE']"
+									"path": "['CIVVE']"
 								},
 								"sink": {
 									"name": "CIVVE",
@@ -998,7 +998,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['MILVE']"
+									"path": "['MILVE']"
 								},
 								"sink": {
 									"name": "MILVE",
@@ -1007,7 +1007,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['KDKG1']"
+									"path": "['KDKG1']"
 								},
 								"sink": {
 									"name": "KDKG1",
@@ -1016,7 +1016,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['KDKG2']"
+									"path": "['KDKG2']"
 								},
 								"sink": {
 									"name": "KDKG2",
@@ -1025,7 +1025,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['KDKG3']"
+									"path": "['KDKG3']"
 								},
 								"sink": {
 									"name": "KDKG3",
@@ -1034,7 +1034,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['KDKG4']"
+									"path": "['KDKG4']"
 								},
 								"sink": {
 									"name": "KDKG4",
@@ -1043,7 +1043,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['KDKG5']"
+									"path": "['KDKG5']"
 								},
 								"sink": {
 									"name": "KDKG5",
@@ -1052,7 +1052,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['XKNZA']"
+									"path": "['XKNZA']"
 								},
 								"sink": {
 									"name": "XKNZA",
@@ -1061,7 +1061,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['FITYP']"
+									"path": "['FITYP']"
 								},
 								"sink": {
 									"name": "FITYP",
@@ -1070,7 +1070,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['STCDT']"
+									"path": "['STCDT']"
 								},
 								"sink": {
 									"name": "STCDT",
@@ -1079,7 +1079,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['STCD3']"
+									"path": "['STCD3']"
 								},
 								"sink": {
 									"name": "STCD3",
@@ -1088,7 +1088,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['STCD4']"
+									"path": "['STCD4']"
 								},
 								"sink": {
 									"name": "STCD4",
@@ -1097,7 +1097,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['XICMS']"
+									"path": "['XICMS']"
 								},
 								"sink": {
 									"name": "XICMS",
@@ -1106,7 +1106,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['XXIPI']"
+									"path": "['XXIPI']"
 								},
 								"sink": {
 									"name": "XXIPI",
@@ -1115,7 +1115,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['XSUBT']"
+									"path": "['XSUBT']"
 								},
 								"sink": {
 									"name": "XSUBT",
@@ -1124,7 +1124,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['CFOPC']"
+									"path": "['CFOPC']"
 								},
 								"sink": {
 									"name": "CFOPC",
@@ -1133,7 +1133,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['TXLW1']"
+									"path": "['TXLW1']"
 								},
 								"sink": {
 									"name": "TXLW1",
@@ -1142,7 +1142,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['TXLW2']"
+									"path": "['TXLW2']"
 								},
 								"sink": {
 									"name": "TXLW2",
@@ -1151,7 +1151,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['CCC01']"
+									"path": "['CCC01']"
 								},
 								"sink": {
 									"name": "CCC01",
@@ -1160,7 +1160,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['CCC02']"
+									"path": "['CCC02']"
 								},
 								"sink": {
 									"name": "CCC02",
@@ -1169,7 +1169,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['CCC03']"
+									"path": "['CCC03']"
 								},
 								"sink": {
 									"name": "CCC03",
@@ -1178,7 +1178,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['CCC04']"
+									"path": "['CCC04']"
 								},
 								"sink": {
 									"name": "CCC04",
@@ -1187,7 +1187,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['CASSD']"
+									"path": "['CASSD']"
 								},
 								"sink": {
 									"name": "CASSD",
@@ -1196,7 +1196,7 @@
 							},
 							{
 								"source": {
-									"path": "$['d']['results'][0]['KNURL']"
+									"path": "['KNURL']"
 								},
 								"sink": {
 									"name": "KNURL",
@@ -1204,7 +1204,7 @@
 								}
 							}
 						],
-						"collectionReference": ""
+						"collectionReference": "$['d']['results']"
 					}
 				},
 				"inputs": [
