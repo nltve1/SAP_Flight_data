@@ -142,6 +142,15 @@
 							},
 							{
 								"source": {
+									"path": "$['d']['results'][0]['ERDAT']"
+								},
+								"sink": {
+									"name": "ERDAT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
 									"path": "$['d']['results'][0]['ERNAM']"
 								},
 								"sink": {
