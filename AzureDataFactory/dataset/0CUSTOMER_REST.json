@@ -8,7 +8,7 @@
 		"annotations": [],
 		"type": "RestResource",
 		"typeProperties": {
-			"relativeUrl": "DeltaLinksOfEntityOf0CUSTOMER_ATTR"
+			"relativeUrl": "EntityOf0CUSTOMER_ATTR"
 		},
 		"schema": []
 	}
