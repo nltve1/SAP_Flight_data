@@ -1,0 +1,281 @@
+{
+	"name": "pipeline1",
+	"properties": {
+		"activities": [
+			{
+				"name": "CopyDataToLake",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SapEccSource",
+						"query": "?$select=*"
+					},
+					"sink": {
+						"type": "ParquetSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "CarrierId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CarrierId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ConnectionId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ConnectionId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FlightDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "FlightDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "BookId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BookId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerType",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Smoker",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Smoker",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LuggageWeight",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "LuggageWeight",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "WeightUnit",
+									"type": "String"
+								},
+								"sink": {
+									"name": "WeightUnit",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InvoiceId",
+									"type": "Boolean"
+								},
+								"sink": {
+									"name": "InvoiceId",
+									"type": "Boolean"
+								}
+							},
+							{
+								"source": {
+									"name": "Class",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Class",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ForeignCurrencyAmount",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "ForeignCurrencyAmount",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "ForeignCurrencyCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ForeignCurrencyCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LocalCurrencyAmount",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "LocalCurrencyAmount",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "LocalCurrencyCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LocalCurrencyCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OrderDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "OrderDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "Counter",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Counter",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AgencyNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AgencyNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Cancelled",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Cancelled",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Reserved",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Reserved",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "passname",
+									"type": "String"
+								},
+								"sink": {
+									"name": "passname",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "passform",
+									"type": "String"
+								},
+								"sink": {
+									"name": "passform",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "passbirth",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "passbirth",
+									"type": "DateTime"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SAPFlightData",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "FlightDataAsParquet",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}
