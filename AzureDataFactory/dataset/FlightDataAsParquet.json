@@ -9,7 +9,10 @@
 		"type": "Parquet",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobFSLocation"
+				"type": "AzureBlobFSLocation",
+				"fileName": "SAPFlightData",
+				"folderPath": "SAP",
+				"fileSystem": "lakestorage"
 			},
 			"compressionCodec": "snappy"
 		},
