@@ -1,5 +1,5 @@
 {
-	"name": "SAP Pipeline",
+	"name": "SAP Flight Pipeline",
 	"properties": {
 		"activities": [
 			{
