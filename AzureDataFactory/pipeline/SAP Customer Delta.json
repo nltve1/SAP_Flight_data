@@ -1215,7 +1215,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "0CUSTOMER_REST",
+						"referenceName": "CUSTOMER_REST",
 						"type": "DatasetReference",
 						"parameters": {
 							"DeltaTokenId": {
