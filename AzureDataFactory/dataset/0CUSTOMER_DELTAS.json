@@ -1,0 +1,15 @@
+{
+	"name": "0CUSTOMER_DELTAS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SAP_0CUSTOMER_ATTR",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SapEccResource",
+		"schema": [],
+		"typeProperties": {
+			"path": "DeltaLinksOfEntityOf0CUSTOMER_ATTR"
+		}
+	}
+}
