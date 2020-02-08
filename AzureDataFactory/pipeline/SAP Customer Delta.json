@@ -1216,7 +1216,13 @@
 				"inputs": [
 					{
 						"referenceName": "0CUSTOMER_REST",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"DeltaTokenId": {
+								"value": "@{activity('GetDeltaKey').output.firstRow.DeltaToken}",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
