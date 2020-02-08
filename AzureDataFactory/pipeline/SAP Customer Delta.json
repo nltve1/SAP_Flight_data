@@ -1219,7 +1219,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"DeltaTokenId": {
-								"value": "@{activity('GetDeltaKey').output.firstRow.DeltaToken}",
+								"value": "max(@{activity('GetDeltaKey').output.firstRow.DeltaToken})",
 								"type": "Expression"
 							}
 						}
@@ -1247,7 +1247,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "SapEccSource",
-						"query": "?$select=DeltaToken,CreatedAt&$orderby=IsInitialLoad desc"
+						"query": "?$select=DeltaToken"
 					},
 					"dataset": {
 						"referenceName": "0CUSTOMER_DELTAS",
