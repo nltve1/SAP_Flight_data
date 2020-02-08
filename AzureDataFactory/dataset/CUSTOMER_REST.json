@@ -15,7 +15,7 @@
 		"type": "RestResource",
 		"typeProperties": {
 			"relativeUrl": {
-				"value": "@concat('DeltaLinksOfEntityOf0CUSTOMER_ATTR(\"',dataset().DeltaTokenId,'\")/ChangesAfter')",
+				"value": "@concat('DeltaLinksOfEntityOf0CUSTOMER_ATTR(&quot;',dataset().DeltaTokenId,'&quot;)/ChangesAfter')",
 				"type": "Expression"
 			}
 		},
