@@ -1,0 +1,45 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "SAPDataFactory"
+		},
+		"0CUSTOMER_REST_SERVICE_password": {
+			"value": ""
+		},
+		"AzureDataLakeStorage_accountKey": {
+			"value": ""
+		},
+		"AzureSQLDatabase_connectionString": {
+			"value": ""
+		},
+		"SAPFlightDataService_password": {
+			"value": ""
+		},
+		"SAP_0CUSTOMER_ATTR_password": {
+			"value": ""
+		},
+		"0CUSTOMER_REST_SERVICE_properties_typeProperties_url": {
+			"value": "http://35.205.185.156:50000/sap/opu/odata/sap/ZS_ODP_CUSTOMER_1_SRV/"
+		},
+		"0CUSTOMER_REST_SERVICE_properties_typeProperties_userName": {
+			"value": "nltve1"
+		},
+		"AzureDataLakeStorage_properties_typeProperties_url": {
+			"value": "https://myowndatalake.dfs.core.windows.net"
+		},
+		"SAPFlightDataService_properties_typeProperties_url": {
+			"value": "http://35.205.185.156:50000/sap/opu/odata/sap/ZCDS_V_BOOKINGS_CDS/"
+		},
+		"SAPFlightDataService_properties_typeProperties_username": {
+			"value": "nltve1"
+		},
+		"SAP_0CUSTOMER_ATTR_properties_typeProperties_url": {
+			"value": "http://35.205.185.156:50000/sap/opu/odata/sap/ZS_ODP_CUSTOMER_1_SRV/"
+		},
+		"SAP_0CUSTOMER_ATTR_properties_typeProperties_username": {
+			"value": "nltve1"
+		}
+	}
+}

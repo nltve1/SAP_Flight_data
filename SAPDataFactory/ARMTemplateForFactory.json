@@ -1,0 +1,2942 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "SAPDataFactory"
+		},
+		"0CUSTOMER_REST_SERVICE_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of '0CUSTOMER_REST_SERVICE'"
+		},
+		"AzureDataLakeStorage_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage'"
+		},
+		"AzureSQLDatabase_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSQLDatabase'"
+		},
+		"SAPFlightDataService_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'SAPFlightDataService'"
+		},
+		"SAP_0CUSTOMER_ATTR_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'SAP_0CUSTOMER_ATTR'"
+		},
+		"0CUSTOMER_REST_SERVICE_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "http://35.205.185.156:50000/sap/opu/odata/sap/ZS_ODP_CUSTOMER_1_SRV/"
+		},
+		"0CUSTOMER_REST_SERVICE_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "nltve1"
+		},
+		"AzureDataLakeStorage_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://myowndatalake.dfs.core.windows.net"
+		},
+		"SAPFlightDataService_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "http://35.205.185.156:50000/sap/opu/odata/sap/ZCDS_V_BOOKINGS_CDS/"
+		},
+		"SAPFlightDataService_properties_typeProperties_username": {
+			"type": "string",
+			"defaultValue": "nltve1"
+		},
+		"SAP_0CUSTOMER_ATTR_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "http://35.205.185.156:50000/sap/opu/odata/sap/ZS_ODP_CUSTOMER_1_SRV/"
+		},
+		"SAP_0CUSTOMER_ATTR_properties_typeProperties_username": {
+			"type": "string",
+			"defaultValue": "nltve1"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/SAP Customer Delta')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "SAP Customer Data Delta",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "GetDeltaKey",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "RestSource",
+								"httpRequestTimeout": "00:01:40",
+								"requestInterval": "00.00:00:00.010",
+								"requestMethod": "GET",
+								"additionalHeaders": {
+									"prefer": "odata.track-changes"
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"path": "[['KUNNR']"
+										},
+										"sink": {
+											"name": "KUNNR"
+										}
+									},
+									{
+										"source": {
+											"path": "[['ADRNR']"
+										},
+										"sink": {
+											"name": "ADRNR",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['ANRED']"
+										},
+										"sink": {
+											"name": "ANRED",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['AUFSD']"
+										},
+										"sink": {
+											"name": "AUFSD",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['BAHNE']"
+										},
+										"sink": {
+											"name": "BAHNE",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['BAHNS']"
+										},
+										"sink": {
+											"name": "BAHNS",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['BBBNR']"
+										},
+										"sink": {
+											"name": "BBBNR",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['BBSNR']"
+										},
+										"sink": {
+											"name": "BBSNR",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['BEGRU']"
+										},
+										"sink": {
+											"name": "BEGRU",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['BRSCH']"
+										},
+										"sink": {
+											"name": "BRSCH",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['BUBKZ']"
+										},
+										"sink": {
+											"name": "BUBKZ",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['DATLT']"
+										},
+										"sink": {
+											"name": "DATLT",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['ERNAM']"
+										},
+										"sink": {
+											"name": "ERNAM",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['EXABL']"
+										},
+										"sink": {
+											"name": "EXABL",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['FAKSD']"
+										},
+										"sink": {
+											"name": "FAKSD",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['FISKN']"
+										},
+										"sink": {
+											"name": "FISKN",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['KNAZK']"
+										},
+										"sink": {
+											"name": "KNAZK",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['KNRZA']"
+										},
+										"sink": {
+											"name": "KNRZA",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['KONZS']"
+										},
+										"sink": {
+											"name": "KONZS",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['KTOKD']"
+										},
+										"sink": {
+											"name": "KTOKD",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['KUKLA']"
+										},
+										"sink": {
+											"name": "KUKLA",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['LAND1']"
+										},
+										"sink": {
+											"name": "LAND1",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['LIFNR']"
+										},
+										"sink": {
+											"name": "LIFNR",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['LIFSD']"
+										},
+										"sink": {
+											"name": "LIFSD",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['LOCCO']"
+										},
+										"sink": {
+											"name": "LOCCO",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['LOEVM']"
+										},
+										"sink": {
+											"name": "LOEVM",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['NAME1']"
+										},
+										"sink": {
+											"name": "NAME1",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['NAME2']"
+										},
+										"sink": {
+											"name": "NAME2",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['NAME3']"
+										},
+										"sink": {
+											"name": "NAME3",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['NAME4']"
+										},
+										"sink": {
+											"name": "NAME4",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['NIELS']"
+										},
+										"sink": {
+											"name": "NIELS",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['ORT01']"
+										},
+										"sink": {
+											"name": "ORT01",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['ORT02']"
+										},
+										"sink": {
+											"name": "ORT02",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['PFACH']"
+										},
+										"sink": {
+											"name": "PFACH",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['PSTL2']"
+										},
+										"sink": {
+											"name": "PSTL2",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['PSTLZ']"
+										},
+										"sink": {
+											"name": "PSTLZ",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['REGIO']"
+										},
+										"sink": {
+											"name": "REGIO",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['COUNC']"
+										},
+										"sink": {
+											"name": "COUNC",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['CITYC']"
+										},
+										"sink": {
+											"name": "CITYC",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['RPMKR']"
+										},
+										"sink": {
+											"name": "RPMKR",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['SORTL']"
+										},
+										"sink": {
+											"name": "SORTL",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['SPERR']"
+										},
+										"sink": {
+											"name": "SPERR",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['SPRAS']"
+										},
+										"sink": {
+											"name": "SPRAS",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['STCD1']"
+										},
+										"sink": {
+											"name": "STCD1",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['STCD2']"
+										},
+										"sink": {
+											"name": "STCD2",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['STKZA']"
+										},
+										"sink": {
+											"name": "STKZA",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['STKZU']"
+										},
+										"sink": {
+											"name": "STKZU",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['STRAS']"
+										},
+										"sink": {
+											"name": "STRAS",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['TELBX']"
+										},
+										"sink": {
+											"name": "TELBX",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['TELF1']"
+										},
+										"sink": {
+											"name": "TELF1",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['TELF2']"
+										},
+										"sink": {
+											"name": "TELF2",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['TELFX']"
+										},
+										"sink": {
+											"name": "TELFX",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['TELTX']"
+										},
+										"sink": {
+											"name": "TELTX",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['TELX1']"
+										},
+										"sink": {
+											"name": "TELX1",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['LZONE']"
+										},
+										"sink": {
+											"name": "LZONE",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['XCPDK']"
+										},
+										"sink": {
+											"name": "XCPDK",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['XZEMP']"
+										},
+										"sink": {
+											"name": "XZEMP",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['VBUND']"
+										},
+										"sink": {
+											"name": "VBUND",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['STCEG']"
+										},
+										"sink": {
+											"name": "STCEG",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['DEAR1']"
+										},
+										"sink": {
+											"name": "DEAR1",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['DEAR2']"
+										},
+										"sink": {
+											"name": "DEAR2",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['DEAR3']"
+										},
+										"sink": {
+											"name": "DEAR3",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['DEAR4']"
+										},
+										"sink": {
+											"name": "DEAR4",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['DEAR5']"
+										},
+										"sink": {
+											"name": "DEAR5",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['DEAR6']"
+										},
+										"sink": {
+											"name": "DEAR6",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['GFORM']"
+										},
+										"sink": {
+											"name": "GFORM",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['BRAN1']"
+										},
+										"sink": {
+											"name": "BRAN1",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['BRAN2']"
+										},
+										"sink": {
+											"name": "BRAN2",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['BRAN3']"
+										},
+										"sink": {
+											"name": "BRAN3",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['BRAN4']"
+										},
+										"sink": {
+											"name": "BRAN4",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['BRAN5']"
+										},
+										"sink": {
+											"name": "BRAN5",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['EKONT']"
+										},
+										"sink": {
+											"name": "EKONT",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['UMSAT']"
+										},
+										"sink": {
+											"name": "UMSAT",
+											"type": "Decimal"
+										}
+									},
+									{
+										"source": {
+											"path": "[['UMJAH']"
+										},
+										"sink": {
+											"name": "UMJAH",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['UWAER']"
+										},
+										"sink": {
+											"name": "UWAER",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['JMZAH']"
+										},
+										"sink": {
+											"name": "JMZAH",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['JMJAH']"
+										},
+										"sink": {
+											"name": "JMJAH",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['KATR1']"
+										},
+										"sink": {
+											"name": "KATR1",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['KATR2']"
+										},
+										"sink": {
+											"name": "KATR2",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['KATR3']"
+										},
+										"sink": {
+											"name": "KATR3",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['KATR4']"
+										},
+										"sink": {
+											"name": "KATR4",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['KATR5']"
+										},
+										"sink": {
+											"name": "KATR5",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['KATR6']"
+										},
+										"sink": {
+											"name": "KATR6",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['KATR7']"
+										},
+										"sink": {
+											"name": "KATR7",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['KATR8']"
+										},
+										"sink": {
+											"name": "KATR8",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['KATR9']"
+										},
+										"sink": {
+											"name": "KATR9",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['KATR10']"
+										},
+										"sink": {
+											"name": "KATR10",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['STKZN']"
+										},
+										"sink": {
+											"name": "STKZN",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['UMSA1']"
+										},
+										"sink": {
+											"name": "UMSA1",
+											"type": "Decimal"
+										}
+									},
+									{
+										"source": {
+											"path": "[['TXJCD']"
+										},
+										"sink": {
+											"name": "TXJCD",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['MCOD1']"
+										},
+										"sink": {
+											"name": "MCOD1",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['MCOD2']"
+										},
+										"sink": {
+											"name": "MCOD2",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['MCOD3']"
+										},
+										"sink": {
+											"name": "MCOD3",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['PERIV']"
+										},
+										"sink": {
+											"name": "PERIV",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['ABRVW']"
+										},
+										"sink": {
+											"name": "ABRVW",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['INSPBYDEBI']"
+										},
+										"sink": {
+											"name": "INSPBYDEBI",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['INSPATDEBI']"
+										},
+										"sink": {
+											"name": "INSPATDEBI",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['KTOCD']"
+										},
+										"sink": {
+											"name": "KTOCD",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['PFORT']"
+										},
+										"sink": {
+											"name": "PFORT",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['WERKS']"
+										},
+										"sink": {
+											"name": "WERKS",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['DTAMS']"
+										},
+										"sink": {
+											"name": "DTAMS",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['DTAWS']"
+										},
+										"sink": {
+											"name": "DTAWS",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['DUEFL']"
+										},
+										"sink": {
+											"name": "DUEFL",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['HZUOR']"
+										},
+										"sink": {
+											"name": "HZUOR",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['SPERZ']"
+										},
+										"sink": {
+											"name": "SPERZ",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['ETIKG']"
+										},
+										"sink": {
+											"name": "ETIKG",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['CIVVE']"
+										},
+										"sink": {
+											"name": "CIVVE",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['MILVE']"
+										},
+										"sink": {
+											"name": "MILVE",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['KDKG1']"
+										},
+										"sink": {
+											"name": "KDKG1",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['KDKG2']"
+										},
+										"sink": {
+											"name": "KDKG2",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['KDKG3']"
+										},
+										"sink": {
+											"name": "KDKG3",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['KDKG4']"
+										},
+										"sink": {
+											"name": "KDKG4",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['KDKG5']"
+										},
+										"sink": {
+											"name": "KDKG5",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['XKNZA']"
+										},
+										"sink": {
+											"name": "XKNZA",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['FITYP']"
+										},
+										"sink": {
+											"name": "FITYP",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['STCDT']"
+										},
+										"sink": {
+											"name": "STCDT",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['STCD3']"
+										},
+										"sink": {
+											"name": "STCD3",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['STCD4']"
+										},
+										"sink": {
+											"name": "STCD4",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['XICMS']"
+										},
+										"sink": {
+											"name": "XICMS",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['XXIPI']"
+										},
+										"sink": {
+											"name": "XXIPI",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['XSUBT']"
+										},
+										"sink": {
+											"name": "XSUBT",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['CFOPC']"
+										},
+										"sink": {
+											"name": "CFOPC",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['TXLW1']"
+										},
+										"sink": {
+											"name": "TXLW1",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['TXLW2']"
+										},
+										"sink": {
+											"name": "TXLW2",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['CCC01']"
+										},
+										"sink": {
+											"name": "CCC01",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['CCC02']"
+										},
+										"sink": {
+											"name": "CCC02",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['CCC03']"
+										},
+										"sink": {
+											"name": "CCC03",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['CCC04']"
+										},
+										"sink": {
+											"name": "CCC04",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['CASSD']"
+										},
+										"sink": {
+											"name": "CASSD",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "[['KNURL']"
+										},
+										"sink": {
+											"name": "KNURL",
+											"type": "String"
+										}
+									}
+								],
+								"collectionReference": "$['d']['results']"
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "CUSTOMER_REST",
+								"type": "DatasetReference",
+								"parameters": {
+									"DeltaTokenId": {
+										"value": "@{last(activity('GetDeltaKey').output.value).DeltaToken}\n",
+										"type": "Expression"
+									}
+								}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "TempDeltaTable",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "GetDeltaKey",
+						"type": "Lookup",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "SapEccSource",
+								"query": "?$select=DeltaToken"
+							},
+							"dataset": {
+								"referenceName": "0CUSTOMER_DELTAS",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"firstRowOnly": false
+						}
+					},
+					{
+						"name": "MergeDeltas",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "SAP Customer Data Delta",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[mergeCustomerData]"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureSQLDatabase",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/CUSTOMER_REST')]",
+				"[concat(variables('factoryId'), '/datasets/TempDeltaTable')]",
+				"[concat(variables('factoryId'), '/datasets/0CUSTOMER_DELTAS')]",
+				"[concat(variables('factoryId'), '/linkedServices/AzureSQLDatabase')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SAP Flight Pipeline')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy SAP Flight Data to Azure",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "SapEccSource",
+								"query": "?$select=*"
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"preCopyScript": "truncate table [dbo].[Bookings]",
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "CarrierId",
+											"type": "String"
+										},
+										"sink": {
+											"name": "CarrierID",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "ConnectionId",
+											"type": "String"
+										},
+										"sink": {
+											"name": "ConnectionID",
+											"type": "Decimal"
+										}
+									},
+									{
+										"source": {
+											"name": "FlightDate",
+											"type": "DateTime"
+										},
+										"sink": {
+											"name": "FlightDate",
+											"type": "DateTime"
+										}
+									},
+									{
+										"source": {
+											"name": "BookId",
+											"type": "String"
+										},
+										"sink": {
+											"name": "BookId",
+											"type": "Decimal"
+										}
+									},
+									{
+										"source": {
+											"name": "CustomerId",
+											"type": "String"
+										},
+										"sink": {
+											"name": "CustomerId",
+											"type": "Decimal"
+										}
+									},
+									{
+										"source": {
+											"name": "CustomerType",
+											"type": "String"
+										},
+										"sink": {
+											"name": "CustomerType",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Smoker",
+											"type": "String"
+										},
+										"sink": {
+											"name": "Smoker",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "LuggageWeight",
+											"type": "Decimal"
+										},
+										"sink": {
+											"name": "LuggageWeight",
+											"type": "Decimal"
+										}
+									},
+									{
+										"source": {
+											"name": "WeightUnit",
+											"type": "String"
+										},
+										"sink": {
+											"name": "WeightUnit",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "InvoiceId",
+											"type": "Boolean"
+										},
+										"sink": {
+											"name": "InvoiceId",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Class",
+											"type": "String"
+										},
+										"sink": {
+											"name": "Class",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "ForeignCurrencyAmount",
+											"type": "Decimal"
+										},
+										"sink": {
+											"name": "ForeignCurrencyAmount",
+											"type": "Decimal"
+										}
+									},
+									{
+										"source": {
+											"name": "ForeignCurrencyCode",
+											"type": "String"
+										},
+										"sink": {
+											"name": "ForeignCurrencyCode"
+										}
+									},
+									{
+										"source": {
+											"name": "LocalCurrencyAmount",
+											"type": "Decimal"
+										},
+										"sink": {
+											"name": "LocalCurrencyAmount",
+											"type": "Decimal"
+										}
+									},
+									{
+										"source": {
+											"name": "LocalCurrencyCode",
+											"type": "String"
+										},
+										"sink": {
+											"name": "LocalCurrencyCode"
+										}
+									},
+									{
+										"source": {
+											"name": "OrderDate",
+											"type": "DateTime"
+										},
+										"sink": {
+											"name": "OrderDate",
+											"type": "DateTime"
+										}
+									},
+									{
+										"source": {
+											"name": "Counter",
+											"type": "String"
+										},
+										"sink": {
+											"name": "Counter",
+											"type": "Decimal"
+										}
+									},
+									{
+										"source": {
+											"name": "AgencyNumber",
+											"type": "String"
+										},
+										"sink": {
+											"name": "AgencyNumber",
+											"type": "Decimal"
+										}
+									},
+									{
+										"source": {
+											"name": "Cancelled",
+											"type": "String"
+										},
+										"sink": {
+											"name": "Cancelled",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Reserved",
+											"type": "String"
+										},
+										"sink": {
+											"name": "Reserved",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "passname",
+											"type": "String"
+										},
+										"sink": {
+											"name": "PassName",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "passform",
+											"type": "String"
+										},
+										"sink": {
+											"name": "PassForm",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "passbirth",
+											"type": "DateTime"
+										},
+										"sink": {
+											"name": "PassBirth",
+											"type": "DateTime"
+										}
+									}
+								]
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "SAPFlightData",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "AzureSQL_Bookings",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/SAPFlightData')]",
+				"[concat(variables('factoryId'), '/datasets/AzureSQL_Bookings')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SAP Flight to Lake')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "CopyDataToLake",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "SapEccSource",
+								"query": "?$select=*"
+							},
+							"sink": {
+								"type": "ParquetSink",
+								"storeSettings": {
+									"type": "AzureBlobFSWriteSettings"
+								}
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "CarrierId",
+											"type": "String"
+										},
+										"sink": {
+											"name": "CarrierId",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "ConnectionId",
+											"type": "String"
+										},
+										"sink": {
+											"name": "ConnectionId",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "FlightDate",
+											"type": "DateTime"
+										},
+										"sink": {
+											"name": "FlightDate",
+											"type": "DateTime"
+										}
+									},
+									{
+										"source": {
+											"name": "BookId",
+											"type": "String"
+										},
+										"sink": {
+											"name": "BookId",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "CustomerId",
+											"type": "String"
+										},
+										"sink": {
+											"name": "CustomerId",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "CustomerType",
+											"type": "String"
+										},
+										"sink": {
+											"name": "CustomerType",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Smoker",
+											"type": "String"
+										},
+										"sink": {
+											"name": "Smoker",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "LuggageWeight",
+											"type": "Decimal"
+										},
+										"sink": {
+											"name": "LuggageWeight",
+											"type": "Decimal"
+										}
+									},
+									{
+										"source": {
+											"name": "WeightUnit",
+											"type": "String"
+										},
+										"sink": {
+											"name": "WeightUnit",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "InvoiceId",
+											"type": "Boolean"
+										},
+										"sink": {
+											"name": "InvoiceId",
+											"type": "Boolean"
+										}
+									},
+									{
+										"source": {
+											"name": "Class",
+											"type": "String"
+										},
+										"sink": {
+											"name": "Class",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "ForeignCurrencyAmount",
+											"type": "Decimal"
+										},
+										"sink": {
+											"name": "ForeignCurrencyAmount",
+											"type": "Decimal"
+										}
+									},
+									{
+										"source": {
+											"name": "ForeignCurrencyCode",
+											"type": "String"
+										},
+										"sink": {
+											"name": "ForeignCurrencyCode",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "LocalCurrencyAmount",
+											"type": "Decimal"
+										},
+										"sink": {
+											"name": "LocalCurrencyAmount",
+											"type": "Decimal"
+										}
+									},
+									{
+										"source": {
+											"name": "LocalCurrencyCode",
+											"type": "String"
+										},
+										"sink": {
+											"name": "LocalCurrencyCode",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "OrderDate",
+											"type": "DateTime"
+										},
+										"sink": {
+											"name": "OrderDate",
+											"type": "DateTime"
+										}
+									},
+									{
+										"source": {
+											"name": "Counter",
+											"type": "String"
+										},
+										"sink": {
+											"name": "Counter",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "AgencyNumber",
+											"type": "String"
+										},
+										"sink": {
+											"name": "AgencyNumber",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Cancelled",
+											"type": "String"
+										},
+										"sink": {
+											"name": "Cancelled",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Reserved",
+											"type": "String"
+										},
+										"sink": {
+											"name": "Reserved",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "passname",
+											"type": "String"
+										},
+										"sink": {
+											"name": "passname",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "passform",
+											"type": "String"
+										},
+										"sink": {
+											"name": "passform",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "passbirth",
+											"type": "DateTime"
+										},
+										"sink": {
+											"name": "passbirth",
+											"type": "DateTime"
+										}
+									}
+								]
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "SAPFlightData",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "FlightDataAsParquet",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/SAPFlightData')]",
+				"[concat(variables('factoryId'), '/datasets/FlightDataAsParquet')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SAPCustomer Load Create Table')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy data1",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "SapEccSource",
+								"query": "?$select=*"
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"preCopyScript": "truncate table [dbo].[Customer]",
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "0CUSTOMER_ATTR_INIT",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "0CUSTOMER_TABLE",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/0CUSTOMER_ATTR_INIT')]",
+				"[concat(variables('factoryId'), '/datasets/0CUSTOMER_TABLE')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/0CUSTOMER_ATTR_INIT')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Initial Load Customer Attributes",
+				"linkedServiceName": {
+					"referenceName": "SAP_0CUSTOMER_ATTR",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "SapEccResource",
+				"schema": [],
+				"typeProperties": {
+					"path": "EntityOf0CUSTOMER_ATTR"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/SAP_0CUSTOMER_ATTR')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/CUSTOMER_REST')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "0CUSTOMER_REST_SERVICE",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"DeltaTokenId": {
+						"type": "string",
+						"defaultValue": "0"
+					}
+				},
+				"annotations": [],
+				"type": "RestResource",
+				"typeProperties": {
+					"relativeUrl": {
+						"value": "@concat('DeltaLinksOfEntityOf0CUSTOMER_ATTR(''',dataset().DeltaTokenId,''')/ChangesAfter')",
+						"type": "Expression"
+					}
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/0CUSTOMER_REST_SERVICE')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/0CUSTOMER_TABLE')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSQLDatabase",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "Customer"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureSQLDatabase')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSQL_Bookings')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSQLDatabase",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "CarrierID",
+						"type": "varchar"
+					},
+					{
+						"name": "ConnectionID",
+						"type": "decimal",
+						"precision": 4,
+						"scale": 0
+					},
+					{
+						"name": "FlightDate",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "BookId",
+						"type": "decimal",
+						"precision": 8,
+						"scale": 0
+					},
+					{
+						"name": "CustomerId",
+						"type": "decimal",
+						"precision": 8,
+						"scale": 0
+					},
+					{
+						"name": "CustomerType",
+						"type": "varchar"
+					},
+					{
+						"name": "Smoker",
+						"type": "varchar"
+					},
+					{
+						"name": "LuggageWeight",
+						"type": "decimal",
+						"precision": 8,
+						"scale": 4
+					},
+					{
+						"name": "WeightUnit",
+						"type": "varchar"
+					},
+					{
+						"name": "InvoiceId",
+						"type": "varchar"
+					},
+					{
+						"name": "Class",
+						"type": "varchar"
+					},
+					{
+						"name": "ForeignCurrencyAmount",
+						"type": "decimal",
+						"precision": 15,
+						"scale": 2
+					},
+					{
+						"name": "ForeignCurrencyCode",
+						"type": "varchar"
+					},
+					{
+						"name": "LocalCurrencyAmount",
+						"type": "decimal",
+						"precision": 15,
+						"scale": 2
+					},
+					{
+						"name": "LocalCurrencyCode",
+						"type": "varchar"
+					},
+					{
+						"name": "OrderDate",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "Counter",
+						"type": "decimal",
+						"precision": 8,
+						"scale": 0
+					},
+					{
+						"name": "AgencyNumber",
+						"type": "decimal",
+						"precision": 8,
+						"scale": 0
+					},
+					{
+						"name": "Cancelled",
+						"type": "varchar"
+					},
+					{
+						"name": "Reserved",
+						"type": "varchar"
+					},
+					{
+						"name": "PassName",
+						"type": "varchar"
+					},
+					{
+						"name": "PassForm",
+						"type": "varchar"
+					},
+					{
+						"name": "PassBirth",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "Bookings"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureSQLDatabase')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/CUSTOMER_ATTR')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSQLDatabase",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "Customer"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureSQLDatabase')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/FlightDataAsParquet')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorage",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "SAPFlightData",
+						"folderPath": "SAP",
+						"fileSystem": "lakestorage"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SAPFlightData')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "SAPFlightDataService",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "SapEccResource",
+				"schema": [],
+				"typeProperties": {
+					"path": "ZCDS_V_BOOKINGS"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/SAPFlightDataService')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/0CUSTOMER_REST_SERVICE')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "RestService",
+				"typeProperties": {
+					"url": "[parameters('0CUSTOMER_REST_SERVICE_properties_typeProperties_url')]",
+					"enableServerCertificateValidation": false,
+					"authenticationType": "Basic",
+					"userName": "[parameters('0CUSTOMER_REST_SERVICE_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('0CUSTOMER_REST_SERVICE_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureDataLakeStorage')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('AzureDataLakeStorage_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('AzureDataLakeStorage_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSQLDatabase')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureSQLDatabase_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SAPFlightDataService')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "SapEcc",
+				"typeProperties": {
+					"url": "[parameters('SAPFlightDataService_properties_typeProperties_url')]",
+					"username": "[parameters('SAPFlightDataService_properties_typeProperties_username')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('SAPFlightDataService_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SAP_0CUSTOMER_ATTR')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "SAP ECC Customer Attributes",
+				"annotations": [],
+				"type": "SapEcc",
+				"typeProperties": {
+					"url": "[parameters('SAP_0CUSTOMER_ATTR_properties_typeProperties_url')]",
+					"username": "[parameters('SAP_0CUSTOMER_ATTR_properties_typeProperties_username')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('SAP_0CUSTOMER_ATTR_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/IntegrationRuntime')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "Managed",
+				"description": "My Integration Runtime",
+				"typeProperties": {
+					"computeProperties": {
+						"location": "West Europe",
+						"dataFlowProperties": {
+							"computeType": "General",
+							"coreCount": 8,
+							"timeToLive": 0
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/0CUSTOMER_DELTAS')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "SAP_0CUSTOMER_ATTR",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "SapEccResource",
+				"schema": [],
+				"typeProperties": {
+					"path": "DeltaLinksOfEntityOf0CUSTOMER_ATTR"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/SAP_0CUSTOMER_ATTR')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/TempDeltaTable')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSQLDatabase",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "KUNNR",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ADRNR",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ANRED",
+						"type": "nvarchar"
+					},
+					{
+						"name": "AUFSD",
+						"type": "nvarchar"
+					},
+					{
+						"name": "BAHNE",
+						"type": "nvarchar"
+					},
+					{
+						"name": "BAHNS",
+						"type": "nvarchar"
+					},
+					{
+						"name": "BBBNR",
+						"type": "nvarchar"
+					},
+					{
+						"name": "BBSNR",
+						"type": "nvarchar"
+					},
+					{
+						"name": "BEGRU",
+						"type": "nvarchar"
+					},
+					{
+						"name": "BRSCH",
+						"type": "nvarchar"
+					},
+					{
+						"name": "BUBKZ",
+						"type": "nvarchar"
+					},
+					{
+						"name": "DATLT",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ERDAT",
+						"type": "datetime2",
+						"scale": 7
+					},
+					{
+						"name": "ERNAM",
+						"type": "nvarchar"
+					},
+					{
+						"name": "EXABL",
+						"type": "nvarchar"
+					},
+					{
+						"name": "FAKSD",
+						"type": "nvarchar"
+					},
+					{
+						"name": "FISKN",
+						"type": "nvarchar"
+					},
+					{
+						"name": "KNAZK",
+						"type": "nvarchar"
+					},
+					{
+						"name": "KNRZA",
+						"type": "nvarchar"
+					},
+					{
+						"name": "KONZS",
+						"type": "nvarchar"
+					},
+					{
+						"name": "KTOKD",
+						"type": "nvarchar"
+					},
+					{
+						"name": "KUKLA",
+						"type": "nvarchar"
+					},
+					{
+						"name": "LAND1",
+						"type": "nvarchar"
+					},
+					{
+						"name": "LIFNR",
+						"type": "nvarchar"
+					},
+					{
+						"name": "LIFSD",
+						"type": "nvarchar"
+					},
+					{
+						"name": "LOCCO",
+						"type": "nvarchar"
+					},
+					{
+						"name": "LOEVM",
+						"type": "nvarchar"
+					},
+					{
+						"name": "NAME1",
+						"type": "nvarchar"
+					},
+					{
+						"name": "NAME2",
+						"type": "nvarchar"
+					},
+					{
+						"name": "NAME3",
+						"type": "nvarchar"
+					},
+					{
+						"name": "NAME4",
+						"type": "nvarchar"
+					},
+					{
+						"name": "NIELS",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ORT01",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ORT02",
+						"type": "nvarchar"
+					},
+					{
+						"name": "PFACH",
+						"type": "nvarchar"
+					},
+					{
+						"name": "PSTL2",
+						"type": "nvarchar"
+					},
+					{
+						"name": "PSTLZ",
+						"type": "nvarchar"
+					},
+					{
+						"name": "REGIO",
+						"type": "nvarchar"
+					},
+					{
+						"name": "COUNC",
+						"type": "nvarchar"
+					},
+					{
+						"name": "CITYC",
+						"type": "nvarchar"
+					},
+					{
+						"name": "RPMKR",
+						"type": "nvarchar"
+					},
+					{
+						"name": "SORTL",
+						"type": "nvarchar"
+					},
+					{
+						"name": "SPERR",
+						"type": "nvarchar"
+					},
+					{
+						"name": "SPRAS",
+						"type": "nvarchar"
+					},
+					{
+						"name": "STCD1",
+						"type": "nvarchar"
+					},
+					{
+						"name": "STCD2",
+						"type": "nvarchar"
+					},
+					{
+						"name": "STKZA",
+						"type": "nvarchar"
+					},
+					{
+						"name": "STKZU",
+						"type": "nvarchar"
+					},
+					{
+						"name": "STRAS",
+						"type": "nvarchar"
+					},
+					{
+						"name": "TELBX",
+						"type": "nvarchar"
+					},
+					{
+						"name": "TELF1",
+						"type": "nvarchar"
+					},
+					{
+						"name": "TELF2",
+						"type": "nvarchar"
+					},
+					{
+						"name": "TELFX",
+						"type": "nvarchar"
+					},
+					{
+						"name": "TELTX",
+						"type": "nvarchar"
+					},
+					{
+						"name": "TELX1",
+						"type": "nvarchar"
+					},
+					{
+						"name": "LZONE",
+						"type": "nvarchar"
+					},
+					{
+						"name": "XCPDK",
+						"type": "nvarchar"
+					},
+					{
+						"name": "XZEMP",
+						"type": "nvarchar"
+					},
+					{
+						"name": "VBUND",
+						"type": "nvarchar"
+					},
+					{
+						"name": "STCEG",
+						"type": "nvarchar"
+					},
+					{
+						"name": "DEAR1",
+						"type": "nvarchar"
+					},
+					{
+						"name": "DEAR2",
+						"type": "nvarchar"
+					},
+					{
+						"name": "DEAR3",
+						"type": "nvarchar"
+					},
+					{
+						"name": "DEAR4",
+						"type": "nvarchar"
+					},
+					{
+						"name": "DEAR5",
+						"type": "nvarchar"
+					},
+					{
+						"name": "DEAR6",
+						"type": "nvarchar"
+					},
+					{
+						"name": "GFORM",
+						"type": "nvarchar"
+					},
+					{
+						"name": "BRAN1",
+						"type": "nvarchar"
+					},
+					{
+						"name": "BRAN2",
+						"type": "nvarchar"
+					},
+					{
+						"name": "BRAN3",
+						"type": "nvarchar"
+					},
+					{
+						"name": "BRAN4",
+						"type": "nvarchar"
+					},
+					{
+						"name": "BRAN5",
+						"type": "nvarchar"
+					},
+					{
+						"name": "EKONT",
+						"type": "nvarchar"
+					},
+					{
+						"name": "UMSAT",
+						"type": "decimal",
+						"precision": 38,
+						"scale": 18
+					},
+					{
+						"name": "UMJAH",
+						"type": "nvarchar"
+					},
+					{
+						"name": "UWAER",
+						"type": "nvarchar"
+					},
+					{
+						"name": "JMZAH",
+						"type": "nvarchar"
+					},
+					{
+						"name": "JMJAH",
+						"type": "nvarchar"
+					},
+					{
+						"name": "KATR1",
+						"type": "nvarchar"
+					},
+					{
+						"name": "KATR2",
+						"type": "nvarchar"
+					},
+					{
+						"name": "KATR3",
+						"type": "nvarchar"
+					},
+					{
+						"name": "KATR4",
+						"type": "nvarchar"
+					},
+					{
+						"name": "KATR5",
+						"type": "nvarchar"
+					},
+					{
+						"name": "KATR6",
+						"type": "nvarchar"
+					},
+					{
+						"name": "KATR7",
+						"type": "nvarchar"
+					},
+					{
+						"name": "KATR8",
+						"type": "nvarchar"
+					},
+					{
+						"name": "KATR9",
+						"type": "nvarchar"
+					},
+					{
+						"name": "KATR10",
+						"type": "nvarchar"
+					},
+					{
+						"name": "STKZN",
+						"type": "nvarchar"
+					},
+					{
+						"name": "UMSA1",
+						"type": "decimal",
+						"precision": 38,
+						"scale": 18
+					},
+					{
+						"name": "TXJCD",
+						"type": "nvarchar"
+					},
+					{
+						"name": "MCOD1",
+						"type": "nvarchar"
+					},
+					{
+						"name": "MCOD2",
+						"type": "nvarchar"
+					},
+					{
+						"name": "MCOD3",
+						"type": "nvarchar"
+					},
+					{
+						"name": "PERIV",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ABRVW",
+						"type": "nvarchar"
+					},
+					{
+						"name": "INSPBYDEBI",
+						"type": "nvarchar"
+					},
+					{
+						"name": "INSPATDEBI",
+						"type": "nvarchar"
+					},
+					{
+						"name": "KTOCD",
+						"type": "nvarchar"
+					},
+					{
+						"name": "PFORT",
+						"type": "nvarchar"
+					},
+					{
+						"name": "WERKS",
+						"type": "nvarchar"
+					},
+					{
+						"name": "DTAMS",
+						"type": "nvarchar"
+					},
+					{
+						"name": "DTAWS",
+						"type": "nvarchar"
+					},
+					{
+						"name": "DUEFL",
+						"type": "nvarchar"
+					},
+					{
+						"name": "HZUOR",
+						"type": "nvarchar"
+					},
+					{
+						"name": "SPERZ",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ETIKG",
+						"type": "nvarchar"
+					},
+					{
+						"name": "CIVVE",
+						"type": "nvarchar"
+					},
+					{
+						"name": "MILVE",
+						"type": "nvarchar"
+					},
+					{
+						"name": "KDKG1",
+						"type": "nvarchar"
+					},
+					{
+						"name": "KDKG2",
+						"type": "nvarchar"
+					},
+					{
+						"name": "KDKG3",
+						"type": "nvarchar"
+					},
+					{
+						"name": "KDKG4",
+						"type": "nvarchar"
+					},
+					{
+						"name": "KDKG5",
+						"type": "nvarchar"
+					},
+					{
+						"name": "XKNZA",
+						"type": "nvarchar"
+					},
+					{
+						"name": "FITYP",
+						"type": "nvarchar"
+					},
+					{
+						"name": "STCDT",
+						"type": "nvarchar"
+					},
+					{
+						"name": "STCD3",
+						"type": "nvarchar"
+					},
+					{
+						"name": "STCD4",
+						"type": "nvarchar"
+					},
+					{
+						"name": "XICMS",
+						"type": "nvarchar"
+					},
+					{
+						"name": "XXIPI",
+						"type": "nvarchar"
+					},
+					{
+						"name": "XSUBT",
+						"type": "nvarchar"
+					},
+					{
+						"name": "CFOPC",
+						"type": "nvarchar"
+					},
+					{
+						"name": "TXLW1",
+						"type": "nvarchar"
+					},
+					{
+						"name": "TXLW2",
+						"type": "nvarchar"
+					},
+					{
+						"name": "CCC01",
+						"type": "nvarchar"
+					},
+					{
+						"name": "CCC02",
+						"type": "nvarchar"
+					},
+					{
+						"name": "CCC03",
+						"type": "nvarchar"
+					},
+					{
+						"name": "CCC04",
+						"type": "nvarchar"
+					},
+					{
+						"name": "CASSD",
+						"type": "nvarchar"
+					},
+					{
+						"name": "KNURL",
+						"type": "nvarchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "TempDeltaTable"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureSQLDatabase')]"
+			]
+		}
+	]
+}
