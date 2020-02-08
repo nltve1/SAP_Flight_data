@@ -1,0 +1,15 @@
+{
+	"name": "0CUSTOMER_DELTAS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "0CUSTOMER_REST_SERVICE",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"typeProperties": {
+			"relativeUrl": "DeltaLinksOfEntityOf0CUSTOMER_ATTR"
+		},
+		"schema": []
+	}
+}
