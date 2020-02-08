@@ -1237,7 +1237,12 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": [],
+				"userProperties": [
+					{
+						"name": "activity",
+						"value": "delta"
+					}
+				],
 				"typeProperties": {
 					"source": {
 						"type": "SapEccSource",
