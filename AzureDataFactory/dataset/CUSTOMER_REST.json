@@ -1,5 +1,5 @@
 {
-	"name": "0CUSTOMER_REST",
+	"name": "CUSTOMER_REST",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "0CUSTOMER_REST_SERVICE",
