@@ -1234,16 +1234,13 @@
 				"typeProperties": {
 					"source": {
 						"type": "SapEccSource",
-						"query": {
-							"value": "select * from DeltaLinksOfEntityOf0CUSTOMER_ATTR",
-							"type": "Expression"
-						}
+						"query": "?$select=DeltaToken&$max"
 					},
 					"dataset": {
 						"referenceName": "0CUSTOMER_DELTAS",
 						"type": "DatasetReference"
 					},
-					"firstRowOnly": false
+					"firstRowOnly": true
 				}
 			}
 		],
