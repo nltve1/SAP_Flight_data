@@ -5,11 +5,17 @@
 			"referenceName": "0CUSTOMER_REST_SERVICE",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"DeltaTokenId": {
+				"type": "string",
+				"defaultValue": "0"
+			}
+		},
 		"annotations": [],
 		"type": "RestResource",
 		"typeProperties": {
 			"relativeUrl": {
-				"value": "@concat('DeltaLinksOfEntityOf0CUSTOMER_ATTR',@{ activity('GetDeltaKey').output.firstRow.DeltaToken},'/ChangesAfter')",
+				"value": "@concat('DeltaLinksOfEntityOf0CUSTOMER_ATTR(\"',dataset().DeltaTokenId,'\")/ChangesAfter')",
 				"type": "Expression"
 			}
 		},
