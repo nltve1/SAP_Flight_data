@@ -9,7 +9,7 @@
 		"type": "RestResource",
 		"typeProperties": {
 			"relativeUrl": {
-				"value": "concat(\"DeltaLinksOfEntityOf0CUSTOMER_ATTR('\",@(PipelineActivity('GetDeltaKey').output.firstRow.DeltaToken),\"')/ChangesAfter\")",
+				"value": "@concat('DeltaLinksOfEntityOf0CUSTOMER_ATTR',@(activity('GetDeltaKey').output.firstRow.DeltaToken),'/ChangesAfter')",
 				"type": "Expression"
 			}
 		},
