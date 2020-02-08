@@ -7,7 +7,7 @@
 		},
 		"parameters": {
 			"DeltaTokenId": {
-				"type": "string",
+				"type": "array",
 				"defaultValue": "0"
 			}
 		},
