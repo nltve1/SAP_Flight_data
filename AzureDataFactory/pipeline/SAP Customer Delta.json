@@ -44,8 +44,7 @@
 									"path": "['KUNNR']"
 								},
 								"sink": {
-									"name": "KUNNR",
-									"type": "String"
+									"name": "KUNNR"
 								}
 							},
 							{
@@ -1227,7 +1226,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "0CUSTOMER_TABLE",
+						"referenceName": "TempDeltaTable",
 						"type": "DatasetReference"
 					}
 				]
@@ -1254,6 +1253,26 @@
 						"type": "DatasetReference"
 					},
 					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "MergeDeltas",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[mergeCustomerData]"
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSQLDatabase",
+					"type": "LinkedServiceReference"
 				}
 			}
 		],
