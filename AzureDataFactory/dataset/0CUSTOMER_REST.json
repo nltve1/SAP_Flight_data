@@ -8,7 +8,10 @@
 		"annotations": [],
 		"type": "RestResource",
 		"typeProperties": {
-			"relativeUrl": "EntityOf0CUSTOMER_ATTR"
+			"relativeUrl": {
+				"value": "concat(\"DeltaLinksOfEntityOf0CUSTOMER_ATTR('\",@(activity('GetDeltaKey').output.firstRow.DeltaToken),\"')/ChangesAfter\")",
+				"type": "Expression"
+			}
 		},
 		"schema": []
 	}
