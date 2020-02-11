@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "SAP Customer Data Delta",
+				"name": "Copy Delta Data",
 				"type": "Copy",
 				"dependsOn": [
 					{
@@ -1260,7 +1260,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "SAP Customer Data Delta",
+						"activity": "Copy Delta Data",
 						"dependencyConditions": [
 							"Succeeded"
 						]
