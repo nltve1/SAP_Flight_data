@@ -16,8 +16,13 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "SapEccSource",
-						"query": "?$select=*"
+						"type": "RestSource",
+						"httpRequestTimeout": "00:01:40",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"additionalHeaders": {
+							"prefer": "odata.track-changes"
+						}
 					},
 					"sink": {
 						"type": "AzureSqlSink",
@@ -28,8 +33,11 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "0CUSTOMER_ATTR_INIT",
-						"type": "DatasetReference"
+						"referenceName": "CUSTOMER_REST",
+						"type": "DatasetReference",
+						"parameters": {
+							"DeltaTokenId": "test"
+						}
 					}
 				],
 				"outputs": [
