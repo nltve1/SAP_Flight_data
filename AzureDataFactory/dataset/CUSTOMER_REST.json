@@ -14,7 +14,10 @@
 		"annotations": [],
 		"type": "RestResource",
 		"typeProperties": {
-			"relativeUrl": "EntityOf0CUSTOMER_ATTR"
+			"relativeUrl": {
+				"value": "@concat('DeltaLinksOfEntityOf0CUSTOMER_ATTR(''',dataset().DeltaTokenId,''')/ChangesAfter')",
+				"type": "Expression"
+			}
 		},
 		"schema": []
 	}
