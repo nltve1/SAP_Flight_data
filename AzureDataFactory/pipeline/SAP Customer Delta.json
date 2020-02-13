@@ -1218,7 +1218,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"DeltaTokenId": {
-								"value": "@{last(activity('GetDeltaKey').output.value).DeltaToken}\n",
+								"value": "@{last(activity('GetDeltaKey').output.value).DeltaToken}",
 								"type": "Expression"
 							}
 						}
